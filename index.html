@@ -483,7 +483,7 @@
     <div class="wrap">
       <h2 id="contact-title">Say hello</h2>
       <p>Questions about a project, an idea to trade, or just want to talk shop? Send me an email.</p>
-      <a class="email" href="mailto:hello@kalogerinis.net">hello@kalogerinis.net</a>
+      <a class="email" data-u="olleh" data-d="ten.siniregolak" href="#contact-title">hello [at] kalogerinis [dot] net</a>
       <div class="elsewhere">
         <h3>Elsewhere on the internet</h3>
         <ul class="socials">
@@ -552,6 +552,20 @@
 
   requestAnimationFrame(t => { frame(t); box.classList.add('on'); });
   if (still) addEventListener('resize', () => frame(0));
+})();
+</script>
+
+<script>
+/* Anti-spam: the address never appears in the HTML; it's assembled here (pieces stored reversed) */
+(() => {
+  const a = document.querySelector('.email[data-u]');
+  if (!a) return;
+  const rev = t => [...t].reverse().join('');
+  const addr = rev(a.dataset.u) + '\u0040' + rev(a.dataset.d);
+  a.textContent = addr;
+  a.href = 'mailto:' + addr;
+  a.removeAttribute('data-u');
+  a.removeAttribute('data-d');
 })();
 </script>
 

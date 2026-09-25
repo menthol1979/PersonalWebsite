@@ -1,0 +1,13 @@
+# Portainer stack: personal-website
+# Serves www.kalogerinis.net through the existing Cloudflare Tunnel (alcyone-tunnel).
+# Only listens on localhost; cloudflared (network_mode: host) connects to 127.0.0.1:8210.
+services:
+  personal-website:
+    image: nginx:alpine
+    container_name: personal-website
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8210:80"
+    volumes:
+      - /home/nickkal/docker/personal-website/site:/usr/share/nginx/html:ro
+      - /home/nickkal/docker/personal-website/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro

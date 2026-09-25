@@ -54,17 +54,20 @@ Then visit <http://localhost:8000>.
 .
 ├── index.html   # the whole site: markup, styles and scripts
 ├── cv/          # CV (EN + GR): content in cv_data.py, PDFs built by build_cv.py
+├── deploy/      # nginx stack, config and publish script
 ├── docs/        # screenshots for this README
 └── README.md    # you are here
 ```
 
 ## Hosting
 
-Coming soon to **www.kalogerinis.net**, served from a small machine at home in Athens through a Cloudflare Tunnel. Uptime depends on the power grid, the UPS, and my patience, in roughly that order.
+Live at **[www.kalogerinis.net](https://www.kalogerinis.net)**, served from a small machine at home in Athens through a Cloudflare Tunnel. Uptime depends on the power grid, the UPS, and my patience, in roughly that order.
+
+The `deploy/` folder has the whole setup: an nginx container (`docker-compose.yml`), its config (`nginx.conf`), and `publish.sh`, which copies only the public files (`index.html` and the CV PDFs) to the folder nginx serves.
 
 ## Status
 
-The design is done, more or less. The content is still compiling.
+Live. The About me section is written; the hobbies are still compiling.
 
 ---
 

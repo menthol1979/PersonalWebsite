@@ -193,20 +193,102 @@
     .bio-cards { grid-template-columns: repeat(3, 1fr); }
   }
   .bio-cards li {
-    padding: 1.5rem 1.75rem;
+    position: relative;
+    padding: 1.5rem 4.25rem 1.5rem 1.75rem;
     border-radius: 1.5rem;
   }
-  .bio-cards li:nth-child(1) { background: var(--sun); color: var(--ink); }
-  .bio-cards li:nth-child(2) { background: var(--bloom); color: var(--ink); border-radius: 1.5rem 1.5rem 1.5rem .25rem; }
-  .bio-cards li:nth-child(3) { background: var(--cobalt); color: var(--paper); border-radius: .25rem 1.5rem 1.5rem 1.5rem; }
+  .bio-cards li:nth-child(1) { background: var(--sun); color: var(--ink); view-transition-name: card-bio; }
+  .bio-cards li:nth-child(2) { background: var(--bloom); color: var(--ink); border-radius: 1.5rem 1.5rem 1.5rem .25rem; view-transition-name: card-studies; }
+  .bio-cards li:nth-child(3) { background: var(--cobalt); color: var(--paper); border-radius: .25rem 1.5rem 1.5rem 1.5rem; view-transition-name: card-life; }
   .bio-cards h3 {
     margin: 0 0 .35rem;
     font-size: 1.35rem;
     font-weight: 700;
     line-height: 1.2;
   }
+  /* The title is the button; in card/tab state it stretches over the whole card */
+  .bio-cards h3 button {
+    all: unset;
+    cursor: pointer;
+  }
+  .bio-cards h3 button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+  .bio-cards li.active h3 button::after { display: none; }
+  .bio-cards li:has(h3 button:focus-visible) { outline: 3px solid var(--ink); outline-offset: 4px; }
+  .bio-cards .plus {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 2.1rem;
+    height: 2.1rem;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), background .2s, color .2s;
+  }
+  .bio-cards li:hover .plus { transform: rotate(90deg); }
   .bio-cards p { margin: 0; font-size: 1rem; line-height: 1.45; opacity: .9; }
   .bio-cards .soon { font-weight: 700; }
+  .bio-cards .more { display: none; }
+
+  /* Open state: the chosen card becomes a full-width panel, the others become tabs */
+  .bio-cards.is-open { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .bio-cards.is-open li:not(.active) {
+    order: 1;
+    flex: 0 0 auto;
+    padding: .7rem 3.4rem .7rem 1.25rem;
+  }
+  .bio-cards.is-open li:not(.active) h3 { margin: 0; font-size: 1.05rem; }
+  .bio-cards.is-open li:not(.active) .teaser { display: none; }
+  .bio-cards.is-open li:not(.active) .plus { top: 50%; right: .7rem; width: 1.7rem; height: 1.7rem; font-size: 1.15rem; margin-top: -.85rem; }
+  .bio-cards li.active {
+    order: 2;
+    flex: 1 1 100%;
+    margin-top: .5rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    min-height: 16rem;
+  }
+  .bio-cards li.active h3 {
+    margin-bottom: 1.25rem;
+    font-size: clamp(1.9rem, 4vw, 2.75rem);
+    font-weight: 900;
+    letter-spacing: -.02em;
+    line-height: 1;
+    padding-right: 3.5rem;
+  }
+  .bio-cards li.active .teaser { display: none; }
+  .bio-cards li.active .more { display: block; }
+  .bio-cards li.active .more p { max-width: 62ch; margin-bottom: 1rem; font-size: 1.15rem; line-height: 1.6; opacity: 1; }
+  .bio-cards li.active .plus { top: clamp(1.5rem, 3.5vw, 2.5rem); right: clamp(1.25rem, 3.5vw, 2.5rem); width: 2.75rem; height: 2.75rem; font-size: 1.8rem; transform: rotate(45deg); }
+  .bio-cards li.active:hover .plus { transform: rotate(135deg); }
+
+  /* Morph: snapshots are revealed at their natural size instead of being stretched */
+  ::view-transition-group(*) {
+    animation-duration: .5s;
+    animation-timing-function: cubic-bezier(.2,.8,.2,1);
+  }
+  ::view-transition-group(card-bio),
+  ::view-transition-group(card-studies),
+  ::view-transition-group(card-life) {
+    overflow: clip;
+    border-radius: 1.5rem;
+  }
+  ::view-transition-old(card-bio), ::view-transition-new(card-bio),
+  ::view-transition-old(card-studies), ::view-transition-new(card-studies),
+  ::view-transition-old(card-life), ::view-transition-new(card-life) {
+    height: 100%;
+    object-fit: none;
+    object-position: left top;
+    overflow: clip;
+  }
 
   /* Hobbies & interests */
   .hobbies {
@@ -262,6 +344,8 @@
   @media (prefers-reduced-motion: reduce) {
     .sun-wrap, .sun, .rays { animation: none; }
     .flare { transition: none; }
+    .bio-cards .plus { transition: none; }
+    ::view-transition-group(*) { animation: none; }
     .email { transition: none; }
   }
 </style>
@@ -294,17 +378,29 @@
       <h2 id="about-title">About me</h2>
       <p class="about-intro">By day I work in an office in Athens. After hours I'm usually building something, fixing something, or finding out why the thing I built needs fixing.</p>
       <ul class="bio-cards">
-        <li>
-          <h3>Short bio</h3>
-          <p><span class="soon">Coming soon.</span> Writing about yourself turns out to be harder than soldering.</p>
+        <li data-id="bio">
+          <h3><button type="button" aria-expanded="false" aria-controls="more-bio">Short bio<span class="plus" aria-hidden="true">+</span></button></h3>
+          <p class="teaser"><span class="soon">Coming soon.</span> Writing about yourself turns out to be harder than soldering.</p>
+          <div class="more" id="more-bio">
+            <p>The full story goes here: where I started, where I ended up, and the detours in between.</p>
+            <p>Until then, this card is doing its best impression of a finished website.</p>
+          </div>
         </li>
-        <li>
-          <h3>Studies</h3>
-          <p><span class="soon">Coming soon.</span> Schools, degrees and the lessons that actually stuck.</p>
+        <li data-id="studies">
+          <h3><button type="button" aria-expanded="false" aria-controls="more-studies">Studies<span class="plus" aria-hidden="true">+</span></button></h3>
+          <p class="teaser"><span class="soon">Coming soon.</span> Schools, degrees and the lessons that actually stuck.</p>
+          <div class="more" id="more-studies">
+            <p>Coming soon: schools, degrees, and which of the lessons survived contact with real life.</p>
+            <p>The paperwork is somewhere. So is the knowledge, mostly.</p>
+          </div>
         </li>
-        <li>
-          <h3>Personal life</h3>
-          <p><span class="soon">Coming soon.</span> The part of life that doesn't run on 5 volts.</p>
+        <li data-id="life">
+          <h3><button type="button" aria-expanded="false" aria-controls="more-life">Personal life<span class="plus" aria-hidden="true">+</span></button></h3>
+          <p class="teaser"><span class="soon">Coming soon.</span> The part of life that doesn't run on 5 volts.</p>
+          <div class="more" id="more-life">
+            <p>Coming soon: family, Athens, and what happens when every screen in the house is switched off.</p>
+            <p>Rare, but it does happen.</p>
+          </div>
         </li>
       </ul>
     </div>
@@ -388,6 +484,66 @@
 
   requestAnimationFrame(t => { frame(t); box.classList.add('on'); });
   if (still) addEventListener('resize', () => frame(0));
+})();
+</script>
+
+<script>
+/* About me cards: morph a card into a full-width panel */
+(() => {
+  const list = document.querySelector('.bio-cards');
+  if (!list) return;
+  const cards = [...list.children];
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const idFromHash = () => (location.hash.match(/^#about-(\w+)$/) || [])[1] || null;
+  let current = null;
+
+  function apply(id) {
+    current = id;
+    list.classList.toggle('is-open', !!id);
+    for (const c of cards) {
+      const on = c.dataset.id === id;
+      c.classList.toggle('active', on);
+      c.querySelector('h3 button').setAttribute('aria-expanded', on);
+    }
+  }
+
+  function show(id, { push = true, animate = true } = {}) {
+    if (id === current) return;
+    if (push) {
+      const url = id ? '#about-' + id : location.pathname + location.search;
+      history.pushState(null, '', url);
+    }
+    const run = () => apply(id);
+    if (animate && !still && document.startViewTransition) {
+      document.startViewTransition(run).finished.then(() => focusCard(id));
+    } else {
+      run();
+      focusCard(id);
+    }
+  }
+
+  function focusCard(id) {
+    const card = cards.find(c => c.dataset.id === id);
+    if (card) card.querySelector('h3 button').focus({ preventScroll: true });
+    const top = list.getBoundingClientRect().top;
+    if (id && (top < 0 || top > innerHeight * .6)) {
+      list.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
+    }
+  }
+
+  for (const c of cards) {
+    c.querySelector('h3 button').addEventListener('click', () => {
+      show(c.dataset.id === current ? null : c.dataset.id);
+    });
+  }
+  addEventListener('keydown', e => { if (e.key === 'Escape' && current) show(null); });
+  addEventListener('popstate', () => show(idFromHash(), { push: false }));
+
+  const initial = idFromHash();
+  if (initial && cards.some(c => c.dataset.id === initial)) {
+    apply(initial);
+    list.scrollIntoView({ block: 'start' });
+  }
 })();
 </script>
 

@@ -179,12 +179,12 @@
   .about .wrap {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 1rem 5rem;
   }
   @media (min-width: 820px) {
-    .about .wrap { grid-template-columns: 1.1fr 1fr; gap: 5rem; }
+    .about .wrap { grid-template-columns: 1fr 1.6fr; }
   }
-  .about h2, .contact h2 {
+  .about h2, .hobbies h2, .contact h2 {
     margin: 0 0 1.25rem;
     font-size: clamp(2rem, 4.5vw, 3.25rem);
     font-weight: 900;
@@ -192,19 +192,35 @@
     letter-spacing: -.02em;
   }
   .about p { margin: 0 0 1rem; max-width: 60ch; }
+  .about .soon { font-weight: 700; color: var(--cobalt); }
 
-  .makes { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
-  .makes li {
-    padding: 1.1rem 1.4rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 1.2rem;
+  /* Hobbies & interests */
+  .hobbies {
+    background: var(--sun);
+    color: var(--ink);
+    padding: 6rem 0;
   }
-  .makes li small { display: block; font-weight: 400; font-size: .95rem; opacity: .85; }
-  .makes li:nth-child(1) { background: var(--cobalt); color: var(--paper); border-radius: 1.5rem; }
-  .makes li:nth-child(2) { background: var(--sun); color: var(--ink); border-radius: 1.5rem 1.5rem 1.5rem .25rem; }
+  .hobbies-head { margin-bottom: 2.5rem; }
+  .hobbies-head p { margin: 0; max-width: 46ch; font-size: 1.25rem; }
+  .makes {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) {
+    .makes { grid-template-columns: 1fr 1fr; }
+  }
+  .makes li {
+    padding: 1.5rem 1.75rem;
+    font-weight: 700;
+    font-size: 1.35rem;
+    border-radius: 1.5rem;
+  }
+  .makes li small { display: block; margin-top: .35rem; font-weight: 400; font-size: 1rem; line-height: 1.45; opacity: .9; }
+  .makes li:nth-child(1) { background: var(--cobalt); color: var(--paper); }
+  .makes li:nth-child(2) { background: var(--paper); color: var(--ink); border-radius: 1.5rem 1.5rem 1.5rem .25rem; }
   .makes li:nth-child(3) { background: var(--mint); color: var(--ink); border-radius: .25rem 1.5rem 1.5rem 1.5rem; }
-  .makes li:nth-child(4) { background: var(--ink); color: var(--paper); border-radius: 1.5rem; }
+  .makes li:nth-child(4) { background: var(--ink); color: var(--paper); }
 
   /* Contact */
   .contact {
@@ -261,16 +277,25 @@
 <main>
   <section class="about" aria-labelledby="about-title">
     <div class="wrap">
+      <h2 id="about-title">About me</h2>
       <div>
-        <h2 id="about-title">About me</h2>
-        <p>By day I work in an office in Athens. The rest of the time I'm tinkering: small servers at home, custom screens around the house, and tools that make my own days run a little smoother.</p>
+        <p>By day I work in an office in Athens. After hours I'm usually building something, fixing something, or finding out why the thing I built needs fixing.</p>
+        <p class="soon">The rest of the bio is still compiling.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="hobbies" aria-labelledby="hobbies-title">
+    <div class="wrap">
+      <div class="hobbies-head">
+        <h2 id="hobbies-title">Hobbies &amp; interests</h2>
         <p>If something can be built instead of bought, I'll usually try building it first. Sometimes it even works on the first try.</p>
       </div>
-      <ul class="makes" aria-label="Things I make">
-        <li>A homelab<small>A handful of machines, each named after a Greek place or myth</small></li>
-        <li>ESP32 gadgets<small>Clocks, dashboards and sensors with touchscreens</small></li>
-        <li>3D prints<small>Enclosures, mounts and whatever else the desk needs</small></li>
-        <li>Productivity tools<small>Little apps that save me a few minutes every day</small></li>
+      <ul class="makes" aria-label="Things I enjoy">
+        <li>A homelab<small>A handful of machines at home, each named after a Greek place or myth. They mostly behave.</small></li>
+        <li>ESP32 gadgets<small>Clocks, dashboards and sensors with touchscreens. The house is slowly filling up with clocks.</small></li>
+        <li>3D printing<small>Enclosures, mounts and whatever else the desk needs this week.</small></li>
+        <li>Productivity tools<small>Little apps that save me a few minutes a day. Building them took slightly longer.</small></li>
       </ul>
     </div>
   </section>

@@ -298,6 +298,19 @@
   .tl-body span { display: block; }
   .tl-body em { font-style: italic; }
 
+  .cv-links { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .25rem; }
+  .cv-btn {
+    display: inline-flex; align-items: baseline; gap: .6rem;
+    padding: .85rem 1.4rem;
+    border-radius: 999px;
+    background: var(--ink); color: var(--paper);
+    font-weight: 700; font-size: 1.1rem;
+    text-decoration: none;
+    transition: background .2s, color .2s, transform .2s;
+  }
+  .cv-btn small { font-weight: 500; font-size: .85rem; opacity: .75; }
+  .cv-btn:hover { background: var(--paper); color: var(--ink); transform: translateY(-2px); }
+
   /* Morph: snapshots are revealed at their natural size instead of being stretched */
   ::view-transition-group(*) {
     animation-duration: .5s;
@@ -404,7 +417,7 @@
     .morph .plus { transition: none; }
     ::view-transition-group(*) { animation: none; }
     .email { transition: none; }
-    .socials a, .socials a span { transition: none; }
+    .socials a, .socials a span, .cv-btn { transition: none; }
   }
 </style>
 </head>
@@ -468,6 +481,12 @@
               <div class="tl-item"><span class="tl-year">2004</span><div class="tl-body"><strong>WPMC '04, Abano Terme, Italy</strong><span>Nikos Kalogerinis &amp; Michael Paterakis, &ldquo;Moving Cache Memory Architecture for Efficient Media Streaming Distribution over Wireless Domains&rdquo;. <em>Seventh International Symposium on Wireless Personal Multimedia Communications</em>, 11–14 September 2004.</span></div></div>
               <div class="tl-item"><span class="tl-year">2004</span><div class="tl-body"><strong>State Scholarships Foundation of Greece (IKY)</strong><span>Award for excellence in the ECE graduate program (course average 9.63 / 10)</span></div></div>
               <div class="tl-item"><span class="tl-year">2003</span><div class="tl-body"><strong>Ericsson Southeast Europe</strong><span>Ericsson Awards of Excellence in Telecommunications: 2nd prize for the diploma thesis</span></div></div>
+            </div>
+            <h4>The formal version</h4>
+            <p>Same facts, fewer jokes. Includes the work experience this page politely skips.</p>
+            <div class="cv-links">
+              <a class="cv-btn" href="cv/Nikos-Kalogerinis-CV-EN.pdf" download>Download my CV <small>English · PDF</small></a>
+              <a class="cv-btn" href="cv/Nikos-Kalogerinis-CV-GR.pdf" download lang="el">Βιογραφικό <small>Ελληνικά · PDF</small></a>
             </div>
           </div>
         </li>

@@ -53,6 +53,7 @@ Then visit <http://localhost:8000>.
 ```text
 .
 ├── index.html   # the whole site: markup, styles and scripts
+├── cv/          # CV (EN + GR): content in cv_data.py, PDFs built by build_cv.py
 ├── docs/        # screenshots for this README
 └── README.md    # you are here
 ```

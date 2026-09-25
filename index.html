@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nikos</title>
+<title>Nikos Kalogerinis</title>
 <meta name="description" content="Nikos — Athens-based tinkerer. Homelab, ESP32 gadgets, 3D printing.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23FFC926'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -552,6 +552,16 @@
 
   requestAnimationFrame(t => { frame(t); box.classList.add('on'); });
   if (still) addEventListener('resize', () => frame(0));
+})();
+</script>
+
+<script>
+/* Tab title: a small nudge while the visitor is on another tab */
+(() => {
+  const title = document.title;
+  document.addEventListener('visibilitychange', () => {
+    document.title = document.hidden ? "\u2600 The sun's still up. Come back." : title;
+  });
 })();
 </script>
 

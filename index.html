@@ -193,39 +193,20 @@
     .bio-cards { grid-template-columns: repeat(3, 1fr); }
   }
   .bio-cards li {
-    --shadow: var(--sun);
-    position: relative;
-    padding: 1.75rem 1.75rem 2rem;
-    background: var(--paper);
-    border: 3px solid var(--ink);
-    border-radius: 1.25rem;
-    box-shadow: 8px 8px 0 var(--shadow);
-    transition: transform .2s ease, box-shadow .2s ease;
+    padding: 1.5rem 1.75rem;
+    border-radius: 1.5rem;
   }
-  .bio-cards li:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--shadow); }
-  .bio-cards li:nth-child(1) { --shadow: var(--sun); }
-  .bio-cards li:nth-child(2) { --shadow: var(--bloom); }
-  .bio-cards li:nth-child(3) { --shadow: var(--mint); }
-  .bio-cards .num {
-    display: inline-block;
-    margin-bottom: 1rem;
-    padding: .15rem .6rem;
-    border-radius: 999px;
-    background: var(--ink);
-    color: var(--paper);
-    font-size: .85rem;
-    font-weight: 700;
-    letter-spacing: .08em;
-  }
+  .bio-cards li:nth-child(1) { background: var(--sun); color: var(--ink); }
+  .bio-cards li:nth-child(2) { background: var(--bloom); color: var(--ink); border-radius: 1.5rem 1.5rem 1.5rem .25rem; }
+  .bio-cards li:nth-child(3) { background: var(--cobalt); color: var(--paper); border-radius: .25rem 1.5rem 1.5rem 1.5rem; }
   .bio-cards h3 {
-    margin: 0 0 .6rem;
-    font-size: 1.6rem;
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: -.01em;
+    margin: 0 0 .35rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.2;
   }
-  .bio-cards p { margin: 0; }
-  .bio-cards .soon { display: block; margin-bottom: .35rem; font-weight: 700; color: var(--cobalt); }
+  .bio-cards p { margin: 0; font-size: 1rem; line-height: 1.45; opacity: .9; }
+  .bio-cards .soon { font-weight: 700; }
 
   /* Hobbies & interests */
   .hobbies {
@@ -281,7 +262,6 @@
   @media (prefers-reduced-motion: reduce) {
     .sun-wrap, .sun, .rays { animation: none; }
     .flare { transition: none; }
-    .bio-cards li { transition: none; }
     .email { transition: none; }
   }
 </style>
@@ -315,19 +295,16 @@
       <p class="about-intro">By day I work in an office in Athens. After hours I'm usually building something, fixing something, or finding out why the thing I built needs fixing.</p>
       <ul class="bio-cards">
         <li>
-          <span class="num">01</span>
           <h3>Short bio</h3>
-          <p><span class="soon">Coming soon.</span>Writing about yourself turns out to be harder than soldering.</p>
+          <p><span class="soon">Coming soon.</span> Writing about yourself turns out to be harder than soldering.</p>
         </li>
         <li>
-          <span class="num">02</span>
           <h3>Studies</h3>
-          <p><span class="soon">Coming soon.</span>Schools, degrees and the lessons that actually stuck.</p>
+          <p><span class="soon">Coming soon.</span> Schools, degrees and the lessons that actually stuck.</p>
         </li>
         <li>
-          <span class="num">03</span>
           <h3>Personal life</h3>
-          <p><span class="soon">Coming soon.</span>The part of life that doesn't run on 5 volts.</p>
+          <p><span class="soon">Coming soon.</span> The part of life that doesn't run on 5 volts.</p>
         </li>
       </ul>
     </div>

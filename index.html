@@ -270,6 +270,34 @@
   .morph li.active .plus { top: clamp(1.5rem, 3.5vw, 2.5rem); right: clamp(1.25rem, 3.5vw, 2.5rem); width: 2.75rem; height: 2.75rem; font-size: 1.8rem; transform: rotate(45deg); }
   .morph li.active:hover .plus { transform: rotate(135deg); }
 
+  /* Timeline inside an open card (Studies) */
+  .morph .more h4 {
+    margin: 2.25rem 0 1rem;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -.01em;
+  }
+  .tl { display: grid; gap: 1.1rem; max-width: 70ch; }
+  .tl-item { display: grid; grid-template-columns: 1fr; gap: .4rem; }
+  @media (min-width: 720px) {
+    .tl-item { grid-template-columns: 8.5rem 1fr; gap: 1.25rem; }
+  }
+  .tl-year {
+    justify-self: start;
+    align-self: start;
+    padding: .2rem .7rem;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: .9rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .tl-body { font-size: 1.05rem; line-height: 1.5; }
+  .tl-body strong { display: block; font-size: 1.1rem; }
+  .tl-body span { display: block; }
+  .tl-body em { font-style: italic; }
+
   /* Morph: snapshots are revealed at their natural size instead of being stretched */
   ::view-transition-group(*) {
     animation-duration: .5s;
@@ -424,10 +452,23 @@
         </li>
         <li data-id="studies" style="view-transition-name: card-studies">
           <h3><button type="button" aria-expanded="false" aria-controls="more-studies">Studies<span class="plus" aria-hidden="true">+</span></button></h3>
-          <p class="teaser"><span class="soon">Coming soon.</span> Schools, degrees and the lessons that actually stuck.</p>
+          <p class="teaser">Three years of kindergarten, one diploma, two master's degrees and a prize from Ericsson. In that order.</p>
           <div class="more" id="more-studies">
-            <p>Coming soon: schools, degrees, and which of the lessons survived contact with real life.</p>
-            <p>The paperwork is somewhere. So is the knowledge, mostly.</p>
+            <p>My long journey into knowledge began with three (yes, three) years at the Pronoia kindergarten in Nafplio. I wasn't a quick study, and my mother was a kindergarten teacher with nowhere else to leave me. I like to think I learned it thoroughly.</p>
+            <p>Then primary school. First and second grade at the 3rd Primary School, followed by a transfer to the 2nd, because every <em>enfant gâté</em> in town had ended up at the 3rd. After a triumphant graduation, on to the 2nd Junior High School of Nafplio. Yes, I caught the era of morning and afternoon shifts. I'm that old.</p>
+            <p>High school was at &ldquo;Synchroni Paideia&rdquo;. Don't bother looking it up; it closed. Like most people's, those are years I'd rather not dwell on. But the job got done: we studied, they drilled it into us, and I got in where I wanted.</p>
+            <h4>Degrees</h4>
+            <div class="tl">
+              <div class="tl-item"><span class="tl-year">2002–2006</span><div class="tl-body"><strong>Technical University of Crete, Chania</strong><span>MSc, School of Production Engineering &amp; Management</span><span>Specialization: Business Organization &amp; Management</span><span>Thesis: <em>Development of a web-based multi-criteria group decision support system</em></span><span>Course average: 8.14 / 10</span></div></div>
+              <div class="tl-item"><span class="tl-year">2002–2005</span><div class="tl-body"><strong>Technical University of Crete, Chania</strong><span>MSc, School of Electronic &amp; Computer Engineering</span><span>Specialization: Communication Networks</span><span>Thesis: <em>Energy-Aware Scoping Algorithm and Energy Saving Techniques for Wireless Sensor Networks</em></span><span>Course average: 9.63 / 10</span></div></div>
+              <div class="tl-item"><span class="tl-year">1996–2002</span><div class="tl-body"><strong>Technical University of Crete, Chania</strong><span>Diploma in Electronic &amp; Computer Engineering (5-year degree)</span><span>Grade: 7.99 / 10 (&ldquo;Very Good&rdquo;)</span><span>Thesis: <em>Development and performance study of an algorithm for guaranteed delivery of time-sensitive data flows in micro-cellular wireless networks</em> (graded 10 / 10)</span></div></div>
+            </div>
+            <h4>Publications &amp; awards</h4>
+            <div class="tl">
+              <div class="tl-item"><span class="tl-year">2004</span><div class="tl-body"><strong>WPMC '04, Abano Terme, Italy</strong><span>Nikos Kalogerinis &amp; Michael Paterakis, &ldquo;Moving Cache Memory Architecture for Efficient Media Streaming Distribution over Wireless Domains&rdquo;. <em>Seventh International Symposium on Wireless Personal Multimedia Communications</em>, 11–14 September 2004.</span></div></div>
+              <div class="tl-item"><span class="tl-year">2004</span><div class="tl-body"><strong>State Scholarships Foundation of Greece (IKY)</strong><span>Award for excellence in the ECE graduate program (course average 9.63 / 10)</span></div></div>
+              <div class="tl-item"><span class="tl-year">2003</span><div class="tl-body"><strong>Ericsson Southeast Europe</strong><span>Ericsson Awards of Excellence in Telecommunications: 2nd prize for the diploma thesis</span></div></div>
+            </div>
           </div>
         </li>
         <li data-id="life" style="view-transition-name: card-life">

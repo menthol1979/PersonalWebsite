@@ -192,34 +192,34 @@
   @media (min-width: 900px) {
     .bio-cards { grid-template-columns: repeat(3, 1fr); }
   }
-  .bio-cards li {
+  .morph li {
     position: relative;
     padding: 1.5rem 4.25rem 1.5rem 1.75rem;
     border-radius: 1.5rem;
   }
-  .bio-cards li:nth-child(1) { background: var(--sun); color: var(--ink); view-transition-name: card-bio; }
-  .bio-cards li:nth-child(2) { background: var(--bloom); color: var(--ink); border-radius: 1.5rem 1.5rem 1.5rem .25rem; view-transition-name: card-studies; }
-  .bio-cards li:nth-child(3) { background: var(--cobalt); color: var(--paper); border-radius: .25rem 1.5rem 1.5rem 1.5rem; view-transition-name: card-life; }
-  .bio-cards h3 {
+  .bio-cards li:nth-child(1) { background: var(--sun); color: var(--ink); }
+  .bio-cards li:nth-child(2) { background: var(--bloom); color: var(--ink); border-radius: 1.5rem 1.5rem 1.5rem .25rem; }
+  .bio-cards li:nth-child(3) { background: var(--cobalt); color: var(--paper); border-radius: .25rem 1.5rem 1.5rem 1.5rem; }
+  .morph h3 {
     margin: 0 0 .35rem;
     font-size: 1.35rem;
     font-weight: 700;
     line-height: 1.2;
   }
   /* The title is the button; in card/tab state it stretches over the whole card */
-  .bio-cards h3 button {
+  .morph h3 button {
     all: unset;
     cursor: pointer;
   }
-  .bio-cards h3 button::after {
+  .morph h3 button::after {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
   }
-  .bio-cards li.active h3 button::after { display: none; }
-  .bio-cards li:has(h3 button:focus-visible) { outline: 3px solid var(--ink); outline-offset: 4px; }
-  .bio-cards .plus {
+  .morph li.active h3 button::after { display: none; }
+  .morph li:has(h3 button:focus-visible) { outline: 3px solid var(--ink); outline-offset: 4px; }
+  .morph .plus {
     position: absolute;
     top: 1.25rem;
     right: 1.25rem;
@@ -234,29 +234,29 @@
     line-height: 1;
     transition: transform .35s cubic-bezier(.2,.8,.2,1), background .2s, color .2s;
   }
-  .bio-cards li:hover .plus { transform: rotate(90deg); }
-  .bio-cards p { margin: 0; font-size: 1rem; line-height: 1.45; opacity: .9; }
-  .bio-cards .soon { font-weight: 700; }
-  .bio-cards .more { display: none; }
+  .morph li:hover .plus { transform: rotate(90deg); }
+  .morph p { margin: 0; font-size: 1rem; line-height: 1.45; opacity: .9; }
+  .morph .soon { font-weight: 700; }
+  .morph .more { display: none; }
 
   /* Open state: the chosen card becomes a full-width panel, the others become tabs */
-  .bio-cards.is-open { display: flex; flex-wrap: wrap; gap: .75rem; }
-  .bio-cards.is-open li:not(.active) {
+  .morph.is-open { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .morph.is-open li:not(.active) {
     order: 1;
     flex: 0 0 auto;
     padding: .7rem 3.4rem .7rem 1.25rem;
   }
-  .bio-cards.is-open li:not(.active) h3 { margin: 0; font-size: 1.05rem; }
-  .bio-cards.is-open li:not(.active) .teaser { display: none; }
-  .bio-cards.is-open li:not(.active) .plus { top: 50%; right: .7rem; width: 1.7rem; height: 1.7rem; font-size: 1.15rem; margin-top: -.85rem; }
-  .bio-cards li.active {
+  .morph.is-open li:not(.active) h3 { margin: 0; font-size: 1.05rem; }
+  .morph.is-open li:not(.active) .teaser { display: none; }
+  .morph.is-open li:not(.active) .plus { top: 50%; right: .7rem; width: 1.7rem; height: 1.7rem; font-size: 1.15rem; margin-top: -.85rem; }
+  .morph li.active {
     order: 2;
     flex: 1 1 100%;
     margin-top: .5rem;
     padding: clamp(1.5rem, 4vw, 3rem);
     min-height: 16rem;
   }
-  .bio-cards li.active h3 {
+  .morph li.active h3 {
     margin-bottom: 1.25rem;
     font-size: clamp(1.9rem, 4vw, 2.75rem);
     font-weight: 900;
@@ -264,11 +264,11 @@
     line-height: 1;
     padding-right: 3.5rem;
   }
-  .bio-cards li.active .teaser { display: none; }
-  .bio-cards li.active .more { display: block; }
-  .bio-cards li.active .more p { max-width: 62ch; margin-bottom: 1rem; font-size: 1.15rem; line-height: 1.6; opacity: 1; }
-  .bio-cards li.active .plus { top: clamp(1.5rem, 3.5vw, 2.5rem); right: clamp(1.25rem, 3.5vw, 2.5rem); width: 2.75rem; height: 2.75rem; font-size: 1.8rem; transform: rotate(45deg); }
-  .bio-cards li.active:hover .plus { transform: rotate(135deg); }
+  .morph li.active .teaser { display: none; }
+  .morph li.active .more { display: block; }
+  .morph li.active .more p { max-width: 62ch; margin-bottom: 1rem; font-size: 1.15rem; line-height: 1.6; opacity: 1; }
+  .morph li.active .plus { top: clamp(1.5rem, 3.5vw, 2.5rem); right: clamp(1.25rem, 3.5vw, 2.5rem); width: 2.75rem; height: 2.75rem; font-size: 1.8rem; transform: rotate(45deg); }
+  .morph li.active:hover .plus { transform: rotate(135deg); }
 
   /* Morph: snapshots are revealed at their natural size instead of being stretched */
   ::view-transition-group(*) {
@@ -277,13 +277,21 @@
   }
   ::view-transition-group(card-bio),
   ::view-transition-group(card-studies),
-  ::view-transition-group(card-life) {
+  ::view-transition-group(card-life),
+  ::view-transition-group(card-homelab),
+  ::view-transition-group(card-esp32),
+  ::view-transition-group(card-printing),
+  ::view-transition-group(card-tools) {
     overflow: clip;
     border-radius: 1.5rem;
   }
   ::view-transition-old(card-bio), ::view-transition-new(card-bio),
   ::view-transition-old(card-studies), ::view-transition-new(card-studies),
-  ::view-transition-old(card-life), ::view-transition-new(card-life) {
+  ::view-transition-old(card-life), ::view-transition-new(card-life),
+  ::view-transition-old(card-homelab), ::view-transition-new(card-homelab),
+  ::view-transition-old(card-esp32), ::view-transition-new(card-esp32),
+  ::view-transition-old(card-printing), ::view-transition-new(card-printing),
+  ::view-transition-old(card-tools), ::view-transition-new(card-tools) {
     height: 100%;
     object-fit: none;
     object-position: left top;
@@ -306,13 +314,6 @@
   @media (min-width: 720px) {
     .makes { grid-template-columns: 1fr 1fr; }
   }
-  .makes li {
-    padding: 1.5rem 1.75rem;
-    font-weight: 700;
-    font-size: 1.35rem;
-    border-radius: 1.5rem;
-  }
-  .makes li small { display: block; margin-top: .35rem; font-weight: 400; font-size: 1rem; line-height: 1.45; opacity: .9; }
   .makes li:nth-child(1) { background: var(--cobalt); color: var(--paper); }
   .makes li:nth-child(2) { background: var(--paper); color: var(--ink); border-radius: 1.5rem 1.5rem 1.5rem .25rem; }
   .makes li:nth-child(3) { background: var(--mint); color: var(--ink); border-radius: .25rem 1.5rem 1.5rem 1.5rem; }
@@ -344,7 +345,7 @@
   @media (prefers-reduced-motion: reduce) {
     .sun-wrap, .sun, .rays { animation: none; }
     .flare { transition: none; }
-    .bio-cards .plus { transition: none; }
+    .morph .plus { transition: none; }
     ::view-transition-group(*) { animation: none; }
     .email { transition: none; }
   }
@@ -377,8 +378,8 @@
     <div class="wrap">
       <h2 id="about-title">About me</h2>
       <p class="about-intro">By day I work in an office in Athens. After hours I'm usually building something, fixing something, or finding out why the thing I built needs fixing.</p>
-      <ul class="bio-cards">
-        <li data-id="bio">
+      <ul class="bio-cards morph" data-prefix="about">
+        <li data-id="bio" style="view-transition-name: card-bio">
           <h3><button type="button" aria-expanded="false" aria-controls="more-bio">Short bio<span class="plus" aria-hidden="true">+</span></button></h3>
           <p class="teaser"><span class="soon">Coming soon.</span> Writing about yourself turns out to be harder than soldering.</p>
           <div class="more" id="more-bio">
@@ -386,7 +387,7 @@
             <p>Until then, this card is doing its best impression of a finished website.</p>
           </div>
         </li>
-        <li data-id="studies">
+        <li data-id="studies" style="view-transition-name: card-studies">
           <h3><button type="button" aria-expanded="false" aria-controls="more-studies">Studies<span class="plus" aria-hidden="true">+</span></button></h3>
           <p class="teaser"><span class="soon">Coming soon.</span> Schools, degrees and the lessons that actually stuck.</p>
           <div class="more" id="more-studies">
@@ -394,7 +395,7 @@
             <p>The paperwork is somewhere. So is the knowledge, mostly.</p>
           </div>
         </li>
-        <li data-id="life">
+        <li data-id="life" style="view-transition-name: card-life">
           <h3><button type="button" aria-expanded="false" aria-controls="more-life">Personal life<span class="plus" aria-hidden="true">+</span></button></h3>
           <p class="teaser"><span class="soon">Coming soon.</span> The part of life that doesn't run on 5 volts.</p>
           <div class="more" id="more-life">
@@ -412,11 +413,39 @@
         <h2 id="hobbies-title">Hobbies &amp; interests</h2>
         <p>If something can be built instead of bought, I'll usually try building it first. Sometimes it even works on the first try.</p>
       </div>
-      <ul class="makes" aria-label="Things I enjoy">
-        <li>A homelab<small>A handful of machines at home, each named after a Greek place or myth. They mostly behave.</small></li>
-        <li>ESP32 gadgets<small>Clocks, dashboards and sensors with touchscreens. The house is slowly filling up with clocks.</small></li>
-        <li>3D printing<small>Enclosures, mounts and whatever else the desk needs this week.</small></li>
-        <li>Productivity tools<small>Little apps that save me a few minutes a day. Building them took slightly longer.</small></li>
+      <ul class="makes morph" data-prefix="hobbies" aria-label="Things I enjoy">
+        <li data-id="homelab" style="view-transition-name: card-homelab">
+          <h3><button type="button" aria-expanded="false" aria-controls="more-homelab">A homelab<span class="plus" aria-hidden="true">+</span></button></h3>
+          <p class="teaser">A handful of machines at home, each named after a Greek place or myth. They mostly behave.</p>
+          <div class="more" id="more-homelab">
+            <p>The full tour is coming: which machine does what, how they talk to each other, and which one is misbehaving this week.</p>
+            <p>Spoiler: there's always one.</p>
+          </div>
+        </li>
+        <li data-id="esp32" style="view-transition-name: card-esp32">
+          <h3><button type="button" aria-expanded="false" aria-controls="more-esp32">ESP32 gadgets<span class="plus" aria-hidden="true">+</span></button></h3>
+          <p class="teaser">Clocks, dashboards and sensors with touchscreens. The house is slowly filling up with clocks.</p>
+          <div class="more" id="more-esp32">
+            <p>Coming soon: the clocks, the dashboards, and the little screens that ended up in unexpected rooms.</p>
+            <p>Each one started as a weekend project. Some of them still are.</p>
+          </div>
+        </li>
+        <li data-id="printing" style="view-transition-name: card-printing">
+          <h3><button type="button" aria-expanded="false" aria-controls="more-printing">3D printing<span class="plus" aria-hidden="true">+</span></button></h3>
+          <p class="teaser">Enclosures, mounts and whatever else the desk needs this week.</p>
+          <div class="more" id="more-printing">
+            <p>Coming soon: what gets printed, what gets reprinted, and the prints that didn't make it.</p>
+            <p>The printer doesn't judge. The spool counter does.</p>
+          </div>
+        </li>
+        <li data-id="tools" style="view-transition-name: card-tools">
+          <h3><button type="button" aria-expanded="false" aria-controls="more-tools">Productivity tools<span class="plus" aria-hidden="true">+</span></button></h3>
+          <p class="teaser">Little apps that save me a few minutes a day. Building them took slightly longer.</p>
+          <div class="more" id="more-tools">
+            <p>Coming soon: the little apps, what they do, and how much time they've saved so far.</p>
+            <p>Estimates vary. Mostly downward.</p>
+          </div>
+        </li>
       </ul>
     </div>
   </section>
@@ -488,62 +517,68 @@
 </script>
 
 <script>
-/* About me cards: morph a card into a full-width panel */
+/* Morph cards: a card grows into a full-width panel, its siblings become tabs.
+   One card open at a time across the page; the URL hash (#about-bio, #hobbies-esp32) tracks it. */
 (() => {
-  const list = document.querySelector('.bio-cards');
-  if (!list) return;
-  const cards = [...list.children];
+  const lists = [...document.querySelectorAll('.morph')];
+  if (!lists.length) return;
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const idFromHash = () => (location.hash.match(/^#about-(\w+)$/) || [])[1] || null;
+  const keyOf = (list, card) => list.dataset.prefix + '-' + card.dataset.id;
+  const find = key => {
+    for (const list of lists) for (const card of list.children)
+      if (keyOf(list, card) === key) return { list, card };
+    return null;
+  };
+  const keyFromHash = () => { const h = location.hash.slice(1); return find(h) ? h : null; };
   let current = null;
 
-  function apply(id) {
-    current = id;
-    list.classList.toggle('is-open', !!id);
-    for (const c of cards) {
-      const on = c.dataset.id === id;
-      c.classList.toggle('active', on);
-      c.querySelector('h3 button').setAttribute('aria-expanded', on);
+  function apply(key) {
+    current = key;
+    for (const list of lists) {
+      let open = false;
+      for (const card of list.children) {
+        const on = keyOf(list, card) === key;
+        open ||= on;
+        card.classList.toggle('active', on);
+        card.querySelector('h3 button').setAttribute('aria-expanded', on);
+      }
+      list.classList.toggle('is-open', open);
     }
   }
 
-  function show(id, { push = true, animate = true } = {}) {
-    if (id === current) return;
-    if (push) {
-      const url = id ? '#about-' + id : location.pathname + location.search;
-      history.pushState(null, '', url);
-    }
-    const run = () => apply(id);
+  function show(key, { push = true, animate = true } = {}) {
+    if (key === current) return;
+    if (push) history.pushState(null, '', key ? '#' + key : location.pathname + location.search);
+    const after = () => settle(key);
     if (animate && !still && document.startViewTransition) {
-      document.startViewTransition(run).finished.then(() => focusCard(id));
+      document.startViewTransition(() => apply(key)).finished.then(after);
     } else {
-      run();
-      focusCard(id);
+      apply(key);
+      after();
     }
   }
 
-  function focusCard(id) {
-    const card = cards.find(c => c.dataset.id === id);
-    if (card) card.querySelector('h3 button').focus({ preventScroll: true });
-    const top = list.getBoundingClientRect().top;
-    if (id && (top < 0 || top > innerHeight * .6)) {
-      list.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
+  function settle(key) {
+    const hit = key && find(key);
+    if (!hit) return;
+    hit.card.querySelector('h3 button').focus({ preventScroll: true });
+    const top = hit.list.getBoundingClientRect().top;
+    if (top < 0 || top > innerHeight * .6) {
+      hit.list.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
     }
   }
 
-  for (const c of cards) {
-    c.querySelector('h3 button').addEventListener('click', () => {
-      show(c.dataset.id === current ? null : c.dataset.id);
+  for (const list of lists) for (const card of list.children) {
+    card.querySelector('h3 button').addEventListener('click', () => {
+      const key = keyOf(list, card);
+      show(key === current ? null : key);
     });
   }
   addEventListener('keydown', e => { if (e.key === 'Escape' && current) show(null); });
-  addEventListener('popstate', () => show(idFromHash(), { push: false }));
+  addEventListener('popstate', () => show(keyFromHash(), { push: false }));
 
-  const initial = idFromHash();
-  if (initial && cards.some(c => c.dataset.id === initial)) {
-    apply(initial);
-    list.scrollIntoView({ block: 'start' });
-  }
+  const initial = keyFromHash();
+  if (initial) { apply(initial); find(initial).list.scrollIntoView({ block: 'start' }); }
 })();
 </script>
 

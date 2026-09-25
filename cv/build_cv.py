@@ -65,8 +65,11 @@ def build_html(d):
            f'<style>{CSS}</style></head><body>',
            f'<header class="head"><h1>{d["name"]}</h1><div class="role">{d["role"]} · {d["place"]}</div>',
            '<div class="links">' + "".join(f"<span>{l}</span>" for l in d["links"]) + "</div></header>"]
+    out.append(f'<section style="--accent:{ACCENTS[0]}"><h2>{d["extra_title"]}</h2><div class="extra">')
+    out += [f"<div><b>{k}</b>{v}</div>" for k, v in d["extra"]]
+    out.append("</div></section>")
     for i, (title, entries) in enumerate(d["sections"]):
-        out.append(f'<section style="--accent:{ACCENTS[i]}"><h2>{title}</h2>')
+        out.append(f'<section style="--accent:{ACCENTS[i + 1]}"><h2>{title}</h2>')
         for when, org, pos, desc, bullets in entries:
             out.append(f'<div class="entry"><div class="when">{when}</div><div><div class="org">{org}</div>'
                        f'<div class="pos">{pos}</div><p class="desc">{desc}</p>')
@@ -74,9 +77,7 @@ def build_html(d):
                 out.append("<ul>" + "".join(f"<li>{b}</li>" for b in bullets) + "</ul>")
             out.append("</div></div>")
         out.append("</section>")
-    out.append(f'<section style="--accent:{ACCENTS[len(d["sections"])]}"><h2>{d["extra_title"]}</h2><div class="extra">')
-    out += [f"<div><b>{k}</b>{v}</div>" for k, v in d["extra"]]
-    out.append("</div></section></body></html>")
+    out.append("</body></html>")
     return "".join(out)
 
 

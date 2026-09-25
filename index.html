@@ -340,6 +340,32 @@
   .email:hover { color: var(--paper); border-color: var(--paper); }
   .contact :focus-visible { outline-color: var(--ink); }
 
+  .elsewhere { margin-top: 3.5rem; }
+  .elsewhere h3 {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .socials { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .75rem; }
+  .socials a {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .8rem 1.4rem;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-decoration: none;
+    transition: background .2s, color .2s, transform .2s;
+  }
+  .socials a span { display: inline-block; transition: transform .2s; }
+  .socials a:hover { background: var(--paper); color: var(--ink); transform: translateY(-2px); }
+  .socials a:hover span { transform: translate(2px, -2px); }
+
   footer { margin-top: 5rem; font-size: .95rem; }
 
   @media (prefers-reduced-motion: reduce) {
@@ -348,6 +374,7 @@
     .morph .plus { transition: none; }
     ::view-transition-group(*) { animation: none; }
     .email { transition: none; }
+    .socials a, .socials a span { transition: none; }
   }
 </style>
 </head>
@@ -455,6 +482,13 @@
       <h2 id="contact-title">Say hello</h2>
       <p>Questions about a project, an idea to trade, or just want to talk shop? Send me an email.</p>
       <a class="email" href="mailto:hello@kalogerinis.net">hello@kalogerinis.net</a>
+      <div class="elsewhere">
+        <h3>Elsewhere on the internet</h3>
+        <ul class="socials">
+          <li><a href="https://github.com/menthol1979" target="_blank" rel="me noopener">GitHub <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.facebook.com/nikos.kalogerinis" target="_blank" rel="me noopener">Facebook <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
       <footer>Self-hosted in Athens, on my own hardware.</footer>
     </div>
   </section>
